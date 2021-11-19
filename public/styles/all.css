@@ -1,0 +1,193 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #eff4f4;
+    background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23bae6f2' fill-opacity='0.49' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.basic {
+    background: linear-gradient(rgba(250, 248, 248, 0.2), rgba(25, 167, 173, 0.2)), url(../img/We-need-to-talk-about-pets.jpg) no-repeat center;
+    background-size: cover;
+    height: 85vh;
+    position: relative;
+    overflow: hidden;
+}
+
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+#site-content>section.basic {
+    text-align: center;
+}
+
+.login form,
+.register form,
+.create form, .edit form {
+    margin: 5rem auto;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    background: cadetblue;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+li {
+    list-style-type: none;
+}
+
+.fa-heart {
+    color: red;
+}
+
+.img {
+    width: 15rem;
+    position: relative;
+    overflow: hidden;
+    padding: 0rem;
+}
+
+img {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.img::after {
+    display: block;
+    content: "";
+    padding-top: 100%;
+}
+
+.detailsOtherPet,
+.detailsMyPet,
+.deletePet,
+.otherPet,
+.myPet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detailsMyPet>p:nth-child(2),
+.deletePet>p:nth-child(2),
+.otherPet>p:nth-child(2),
+.myPet>p:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.dashboard>nav>ul {
+    display: flex;
+
+}
+
+.dashboard>nav>ul li:not(:last-child) {
+    padding-right: 1rem;
+}
+
+.dashboard .navbar {
+    justify-content: center;
+}
+
+.basic h1,
+.my-pets h1,
+.dashboard h1 {
+    text-align: center;
+    margin: 0rem;
+    padding: 2rem 0 1rem 0;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+img.hearts {
+    width: 33px;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+div.actions {
+    display: flex;
+    justify-content: center;
+}
+div.actions a {
+    margin-right: 10px;
+    height: 25px;
+}
+
+.deletePet>form,
+.detailsMyPet>form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+.my-pets .my-pets-list,
+.dashboard .other-pets-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.detailsMyPet textarea,
+.my-pets textarea {
+    margin-bottom: 2rem;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    background: #234465;
+}
+
+footer p {
+    padding: 1rem 0;
+    font-weight: bold;
+    margin: 0rem;
+    color: white;
+}
+
+.no-pets {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+textarea#description {
+    height: 100px;
+    resize: none;
+}
+.otherPet {
+    align-items: inherit;
+    width: 24%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-shadow: -8px -2px 28px -8px #000000;
+}
