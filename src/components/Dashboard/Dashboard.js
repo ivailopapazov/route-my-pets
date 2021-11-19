@@ -1,5 +1,6 @@
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-
+import logo, { ReactComponent as Logo } from '../../logo.svg';
+import './Dashboard.css';
 import PetList from '../PetList';
 
 const Dashboard = () => {
@@ -18,7 +19,10 @@ const Dashboard = () => {
                 </Routes>
             </section>
 
+            {/* <img src={logo} className="logo" title="asdasda" alt="asdasd" /> */}
+            <Logo className="logo" />
         </section>
+        
     );
 }
 

@@ -16,7 +16,7 @@ const Header = ({
             <span>Welcome, {user}</span>
             <Link className="button" to="/my-pets">My Pets</Link>
             <Link className="button" to="/create">Add Pet</Link>
-            <Link className="button" to="#">Logout</Link>
+            <Link className="button" to="/logout">Logout</Link>
         </div>
     );
 
