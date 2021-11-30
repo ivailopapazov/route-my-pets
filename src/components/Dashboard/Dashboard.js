@@ -1,7 +1,8 @@
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import logo, { ReactComponent as Logo } from '../../logo.svg';
-import './Dashboard.css';
+import { Routes, Route, Link } from 'react-router-dom';
+
+// import logo, { ReactComponent as Logo } from '../../logo.svg';
 import PetList from '../PetList';
+import './Dashboard.css';
 
 const Dashboard = () => {
     return (
@@ -20,7 +21,7 @@ const Dashboard = () => {
             </section>
 
             {/* <img src={logo} className="logo" title="asdasda" alt="asdasd" /> */}
-            <Logo className="logo" />
+            {/* <Logo className="logo" /> */}
         </section>
         
     );
