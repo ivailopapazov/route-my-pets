@@ -8,7 +8,11 @@ const PetList = () => {
     useEffect(() => {
         petService.getAll()
             .then(result => {
+                console.log(result);
                 setPets(result);
+            })
+            .catch(err => {
+                console.log(err);
             })
     }, []);
 
