@@ -31,4 +31,15 @@ export const destroy = (petId, token) => {
             'X-Authorization': token
         }
     }).then(res => res.json());
-}
+};
+
+export const like = (petId, pet, token) => {
+    return fetch(`${baseUrl}/pets/${petId}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token
+        },
+        body: JSON.stringify(pet)
+    }).then(res => res.json());
+};
