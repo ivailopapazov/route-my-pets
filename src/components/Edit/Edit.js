@@ -15,11 +15,12 @@ const types = [
 const Edit = () => {
     const { petId } = useParams();
     const [errors, setErrors] = useState({name: false})
-    const [pet] = usePetState(petId);
+    const [pet, setPet] = usePetState(petId);
 
     const petEditSubmitHandler = (e) => {
         e.preventDefault();
 
+        // TODO: edit form
         console.log('Submit');
     }
 
@@ -61,7 +62,7 @@ const Edit = () => {
                     <p className="field">
                         <label htmlFor="type">Type</label>
                         <span className="input">
-                            <select id="type" name="type" value={pet.type}>
+                            <select id="type" name="type" value={pet.type} onChange={(e) => setPet(s => ({...s, type: e.target.value}))}>
                                 {types.map(x => <option key={x.value} value={x.value}>{x.text}</option>)}
                             </select>
                         </span>
