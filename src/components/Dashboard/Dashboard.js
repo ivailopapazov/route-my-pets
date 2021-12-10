@@ -30,4 +30,6 @@ const Dashboard = () => {
     );
 }
 
+// export const PrivateDashboard = isAuth(Dashboard)
+
 export default Dashboard;

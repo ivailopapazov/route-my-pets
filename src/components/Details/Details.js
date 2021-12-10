@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
 import * as petService from '../../services/petService';
+import * as likeService from '../../services/likeService';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext, types } from '../../contexts/NotificationContext';
 import usePetState from '../../hooks/usePetState';
 
 import { Button } from 'react-bootstrap';
@@ -11,9 +13,17 @@ import ConfirmDialog from '../Common/ConfirmDialog';
 const Details = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
+    const { addNotification } = useNotificationContext();
     const { petId } = useParams();
     const [pet, setPet] = usePetState(petId);
     const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
+    useEffect(() => {
+        likeService.getPetLikes(petId)
+            .then(likes => {
+                setPet(state => ({...state, likes}))
+            })
+    }, []);
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -41,26 +51,24 @@ const Details = () => {
     );
 
     const likeButtonClick = () => {
-        if (pet.likes.includes(user._id)) {
-            // TODO: add notification
-            console.log('User already liked');
+        if (user._id === pet._ownerId) {
             return;
         }
 
-        let likes = [...pet.likes, user._id];
-        let likedPet = {...pet, likes};
+        if (pet.likes.includes(user._id)) {
+            addNotification('You cannot like again')
+            return;
+        }
 
-        petService.like(pet._id, likedPet, user.accessToken)
-            .then((resData) => {
-                console.log(resData);
-                setPet(state => ({
-                    ...state,
-                    likes,
-                }));
-            })
+        likeService.like(user._id, petId)
+            .then(() => {
+                setPet(state => ({...state, likes: [...state.likes, user._id]}));
+
+                addNotification('Successfuly liked a cat :)', types.success);
+            });
     };
 
-    const userButtons = <Button onClick={likeButtonClick}>Like</Button>;
+    const userButtons = <Button onClick={likeButtonClick} disabled={pet.likes?.includes(user._id)}>Like</Button>;
 
     return (
         <>
@@ -78,7 +86,7 @@ const Details = () => {
 
                         <div className="likes">
                             <img className="hearts" src="/images/heart.png" />
-                            <span id="total-likes">Likes: {pet.likes?.length}</span>
+                            <span id="total-likes">Likes: {pet.likes?.length || 0}</span>
                         </div>
                     </div>
                 </div>

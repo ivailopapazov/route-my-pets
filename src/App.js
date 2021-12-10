@@ -13,6 +13,8 @@ import Edit from './components/Edit';
 import Details from './components/Details';
 import Notification from './components/Common/Notification';
 import ErrorBoundary from './components/Common/ErrorBoundary';
+import PrivateRoute from './components/Common/PrivateRoute';
+import GuardedRoute from './components/Common/GuardedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -31,10 +33,13 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/my-pets" element={<MyPets />} />
-                <Route path="/create" element={<Create />} />
-                <Route path="/edit/:petId" element={<Edit />} />
+                <Route path="/my-pets" element={<PrivateRoute><MyPets /></PrivateRoute>} />
                 <Route path="/details/:petId" element={<Details />} />
+
+                <Route element={<GuardedRoute />}>
+                  <Route path="/create" element={<Create />} />
+                  <Route path="/edit/:petId" element={<Edit />} />
+                </Route>
               </Routes>
             </main>
 

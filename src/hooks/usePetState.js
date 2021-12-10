@@ -20,7 +20,7 @@ const usePetState = (petId) => {
         return () => {
             controller.abort();
         }
-    }, [petId]);
+    }, [petId, controller]);
 
     return [
         pet,
