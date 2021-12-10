@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './contexts/AuthContext';
+import { NotificationProvider } from './contexts/NotificationContext'
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
@@ -10,6 +11,7 @@ import MyPets from './components/MyPets';
 import Create from './components/Create';
 import Edit from './components/Edit';
 import Details from './components/Details';
+import Notification from './components/Common/Notification';
 import ErrorBoundary from './components/Common/ErrorBoundary';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,26 +19,30 @@ function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <div id="container">
-          <Header />
+        <NotificationProvider>
+          <div id="container">
+            <Header />
 
-          <main id="site-content">
-            <Routes>
-              <Route path="/dashboard/*" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/my-pets" element={<MyPets />} />
-              <Route path="/create" element={<Create />} />
-              <Route path="/edit/:petId" element={<Edit />} />
-              <Route path="/details/:petId" element={<Details />} />
-            </Routes>
-          </main>
+            <Notification />
 
-          <footer id="site-footer">
-            <p>@PetMyPet</p>
-          </footer>
-        </div>
+            <main id="site-content">
+              <Routes>
+                <Route path="/dashboard/*" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/logout" element={<Logout />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/my-pets" element={<MyPets />} />
+                <Route path="/create" element={<Create />} />
+                <Route path="/edit/:petId" element={<Edit />} />
+                <Route path="/details/:petId" element={<Details />} />
+              </Routes>
+            </main>
+
+            <footer id="site-footer">
+              <p>@PetMyPet</p>
+            </footer>
+          </div>
+        </NotificationProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

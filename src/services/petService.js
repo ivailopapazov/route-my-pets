@@ -1,8 +1,14 @@
-import { request } from './requester';
+import * as request from './requester';
 
 const baseUrl = 'http://localhost:3030/data';
 
-export const getAll = () => request(`${baseUrl}/pets`)
+export const getAll = () => request.get(`${baseUrl}/pets`);
+
+export const getMyPets = (ownerId) => {
+    let query = encodeURIComponent(`_ownerId="${ownerId}"`);
+
+    return request.get(`${baseUrl}/pets?where=${query}`);
+};
 
 export const create = async (petData, token) => {
     let response = await fetch(`${baseUrl}/pets`, {
@@ -19,8 +25,10 @@ export const create = async (petData, token) => {
     return result;
 };
 
-export const getOne = (petId) => {
-    return fetch(`${baseUrl}/pets/${petId}`)
+export const update = (petId, petData) => request.put(`${baseUrl}/pets/${petId}`, petData);
+
+export const getOne = (petId, signal) => {
+    return fetch(`${baseUrl}/pets/${petId}`, { signal })
         .then(res => res.json())
 };
 
